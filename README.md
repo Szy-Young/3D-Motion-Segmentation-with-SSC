@@ -14,6 +14,9 @@ Please play with [prepare_toy_data.py](prepare_toy_data.py) to generate syntheti
 ## Real data
 
 The algorithm is tested on 2 public scene flow datasets: FlyingThings3D and KITTI.
+The processed data is available at [real_data.zip](real_data.zip)
+
+You can also download the source data and process it by yourself.
 Please first follow the guidelines in [flowstep3d](https://github.com/yairkit/flowstep3d) to download and preprocess the data.
 Then use the provided [prepare_real_data.py](prepare_real_data.py) for further processing.
 
