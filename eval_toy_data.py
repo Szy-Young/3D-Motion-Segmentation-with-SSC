@@ -128,19 +128,20 @@ if __name__ == '__main__':
                                                     max_n_cluster=MAX_N_CLUSTER,
                                                     outlier_label=OUTLIER_LABEL)
 
-        # Count subspace-sparse recovery array
+        # Count subspace-sparse recovery error
         coef_error = ss_recovery_error(coef_mat, labels, outlier_idx)
         COEF_ERROR.append(coef_error)
+
+        # Count instance segmentation metrics
+        tp, fp, fn = accumulate_AP(labels, labels_est, iou_thresh=0.5, outlier_idx=outlier_idx)
+        TP.append(tp)
+        FP.append(fp)
+        FN.append(fn)
 
         # Count point-wise clustering error
         labels_est = best_map(labels, labels_est)
         point_error = float(np.sum(labels != labels_est)) / labels.shape[0]
         POINT_ERROR.append(point_error)
-
-        tp, fp, fn = accumulate_AP(labels, labels_est, iou_thresh=0.5, outlier_idx=outlier_idx)
-        TP.append(tp)
-        FP.append(fp)
-        FN.append(fn)
 
         print (data_file, coef_error, point_error, tp, fp, fn)
 

@@ -31,22 +31,17 @@ python eval_toy_data.py --data_path <Path to data> --n_cluster <GT number of clu
 On real data
 
 ```
-python eval_real_data.py --data_path <Path to data> --normalize --min_n_cluster <Minimum number of clusters when self-tune> --max_n_cluster <Maximum number of clusters when self-tune>
+# FlyingThings3D
+python eval_real_data.py --data_path real_data/flythings3d --normalize --min_n_cluster 2 --max_n_cluster 20
+# KITTI
+python eval_real_data.py --data_path real_data/kitti --normalize --min_n_cluster 2 --max_n_cluster 10
 ```
 
 # Performance
 
 ## Qualitative results
 
-On FlyingThings3D
-
-![](eval_results/ft3d_samples.png)
-
-On KITTI
-
-![](eval_results/kitti_samples.png)
-
-(* Each scene in FT3D / KITTI is subsampled into 1024 points to speed-up)
+![](eval_results/samples.png)
 
 ## Quantitative results
 
@@ -54,9 +49,9 @@ On FlyingThings3D
 
 | Dataset | SSR error | Clustering error | AP@50 | Precision@50 | Recall@50 |
 | ----- | ----- | ----- | ----- | ----- | ----- |
-| FT3D | 0.0290 | 0.3723 | 0.5060 | 0.7644 | 0.2476 |
-| FT3D (>0.01) | 0.0259 | 0.3592 | 0.5649 | 0.7773 | 0.3524 |
-| FT3D (>0.02) | 0.0256 | 0.3151 | 0.6413 | 0.8196 | 0.4630 |
+| FT3D | 0.0290 | 0.3723 | 0.5026 | 0.7575 | 0.2476 |
+| FT3D (>0.01) | 0.0259 | 0.3601 | 0.5506 | 0.7510 | 0.3502 |
+| FT3D (>0.02) | 0.0256 | 0.3151 | 0.6248 | 0.7893 | 0.4603 |
 
 (* For FT3D, only first 200 samples in test set are evaluated)
 
@@ -64,9 +59,9 @@ On KITTI
 
 | Dataset | SSR error | Clustering error | AP@50 | Precision@50 | Recall@50 |
 | ----- | ----- | ----- | ----- | ----- | ----- |
-| KITTI | 0.0078 | 0.0792 | 0.8309 | 0.9038 | 0.7580 |
-| KITTI (>0.01) | 0.0078 | 0.0748 | 0.8411 | 0.9141 | 0.7681 |
-| KITTI (>0.02) | 0.0076 | 0.0650 | 0.8734 | 0.9373 | 0.8094 |
+| KITTI | 0.0078 | 0.3030 | 0.5369 | 0.4391 | 0.6348 |
+| KITTI (>0.01) | 0.0078 | 0.3045 | 0.5386 | 0.4360 | 0.6411 |
+| KITTI (>0.02) | 0.0076 | 0.3060 | 0.5563 | 0.4303 | 0.6824 |
 
 (* > 0.01/0.0.2 means objects with too few points are removed)
 
